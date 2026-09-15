@@ -1,0 +1,478 @@
+/* body {
+    font-family: Open Sans, sans-serif;
+} */
+
+.fme_efw_form_layout_wrapper {
+    position: fixed;
+    top: 30px;
+    left: auto;
+    width: 100%;
+    height: 100%;
+    z-index: 999999;
+    background-color: rgba(0, 0, 0, 0.8);
+    overflow: auto;
+    display: none;
+}
+
+.fme_efw_form_layout_wrapper_active {
+    display: block;
+}
+
+form {
+    width: 100%;
+}
+
+.fme_efw_form_layout {
+    display: block;
+    width: 100%;
+    max-width: 650px;
+    box-shadow: 0px 0px 10px rgba(204, 204, 204, 0.4);
+    border-radius: 4px;
+    background-color: #fff;
+    margin: 30px auto;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.fme_efw_form_layout .fme_efw_form_header {
+    position: relative;
+    padding: 20px;
+    background: #ffffff;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.fme_efw_form_layout .fme_efw_form_header .fme_efw_form_header_left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.fme_efw_form_close_button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: 0;
+}
+
+.fme_efw_form_close_button:hover {
+    background: none;
+}
+
+.fme_efw_form_layout .fme_efw_form_header .fme_efw_form_header_right .fme_efw_form_close_button {
+    background: none;
+    border: none;
+    color: #ccc;
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.fme_efw_form_layout .fme_efw_form_footer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.fme_efw_form_layout .fme_efw_form_submit_button {
+    background-color: #2271b1;
+    outline: none;
+    border: 1px solid #2271b1;
+    color: #fff;
+    border-radius: 4px;
+    transition: all 0.4s;
+    width: 200px;
+    padding: 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    text-transform: uppercase;
+    letter-spacing: 0.06rem;
+}
+
+.fme_efw_form_layout .fme_efw_form_submit_button:hover {
+    background: #135e96;
+}
+
+.fme_efw_form_group {
+    width: 100%;
+    margin: 10px 0;
+}
+
+.fme_efw_checkbox {
+    justify-content: flex-start;
+}
+
+.fme_efw_form_group .fme_efw_label_field {
+    display: block;
+    width: auto;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.fme_efw_form_group .fme_efw_input_field,
+.fme_efw_form_group .fme_efw_date_field,
+.fme_efw_form_group .fme_efw_datetime_field,
+.fme_efw_form_group .fme_efw_select_field,
+.fme_efw_form_group .fme_efw_textarea_field {
+    display: block;
+    box-sizing: border-box;
+    background: #f6f6f6;
+    margin-bottom: 10px;
+    border: none;
+    padding: 15px;
+    border-radius: 10px;
+    padding: 12px 20px;
+    width: 100%;
+    resize: vertical;
+}
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    border: none;
+    outline: none;
+}
+
+.fme_efw_form_group .fme_efw_select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23131313%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem top 50%;
+    background-size: 0.65rem auto;
+}
+
+option {
+    font-size: 14px;
+    border-radius: 10px;
+    line-height: 10px;
+}
+
+.fme_efw_form_group .fme_efw_input_field:focus,
+.fme_efw_form_group .fme_efw_date_field:focus,
+.fme_efw_form_group .fme_efw_datetime_field:focus,
+.fme_efw_form_group .fme_efw_select_field:focus,
+.fme_efw_form_group .fme_efw_textarea_field:focus {
+    box-shadow: 0px 0px 10px rgba(83, 0, 160, 0.2);
+    transition: all 0.3s;
+}
+
+.fme_efw_form_group .fme_efw_input_field:hover,
+.fme_efw_form_group .fme_efw_date_field:hover,
+.fme_efw_form_group .fme_efw_datetime_field:hover,
+.fme_efw_form_group .fme_efw_select_field:hover,
+.fme_efw_form_group .fme_efw_textarea_field:hover {
+    box-shadow: 0px 0px 10px #e7e4e4;
+}
+
+.fme_efw_form_group .fme_efw_checkbox_field,
+.fme_efw_form_group .fme_efw_radio_field {
+    display: inline-block;
+    width: auto;
+    accent-color: #000000;
+}
+
+.fme_efw_option_label {
+    display: inline-block;
+    margin-left: 8px;
+}
+
+.mt-5 {
+    margin-top: 5px;
+}
+
+.mb-5 {
+    margin-bottom: 5px;
+}
+
+.ml-5 {
+    margin-left: 5px;
+}
+
+.mr-5 {
+    margin-right: 5px;
+}
+
+.fme-efw-button-block {
+    display: block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.fme-efw-button-inline {
+    display: inline-block;
+}
+
+.fme_efw_alert {
+    width: 100%;
+    padding: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    border-left: 4px solid #333333;
+    margin: 10px 0px;
+    display: none;
+}
+
+.fme_efw_alert_success {
+    border-left-color: rgb(83, 0, 160);
+    box-shadow: 0px 0px 10px rgba(83, 0, 160, 0.2);
+}
+
+.fme_efw_alert_error {
+    border-left-color: #9c0000;
+    box-shadow: 0px 0px 10px rgba(156, 0, 0, 0.2);
+}
+
+.fme_efw_form_tab {
+    background: #ffffff;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 10px;
+}
+
+.fme_efw_tab_icon {
+    width: 20px !important;
+    height: 20px !important;
+    margin-right: 5px;
+}
+
+/* Style the buttons that are used to open the tab content */
+.fme_efw_form_tab button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 15px;
+    background: transparent;
+    font-weight: 400;
+    letter-spacing: 0.04rem;
+    width: 100%;
+    color: #808080;
+    border-bottom: 3px solid #ffffff;
+    margin-right: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.fme_efw_form_tab button {
+    background: transparent;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+}
+
+.fme_efw_form_tab button:focus {
+    outline: none;
+}
+
+.fme_efw_form_tab button>span,
+.fme_efw_form_tab button>svg {
+    pointer-events: none;
+    margin-right: 5px;
+}
+
+.fme_efw_form_tab button:last-child {
+    border-right: 0;
+}
+
+/* Create an active/current tablink class */
+.fme_efw_form_tab button.active {
+    color: #2271b1;
+    background: #f6f6f6;
+    border-bottom: 3px solid #2271b1;
+}
+
+.fme_efw_form_tab button.active svg,
+.fme_efw_form_tab button.active button {
+    color: #2271b1;
+    fill: #2271b1;
+}
+
+/* Change background color of buttons on hover */
+.fme_efw_form_tab button:hover {
+    border-bottom: 3px solid #2271b1;
+    background: #f6f6f6;
+}
+
+.fme_efw_form_tab button:hover svg path,
+.fme_efw_form_tab button:hover svg,
+.fme_efw_form_tab button:hover button {
+    color: #2271b1;
+    fill: #2271b1;
+}
+
+/* Style the tab content */
+.fme_efw_form {
+    display: flex;
+    grid-gap: 20px;
+    width: 100%;
+    align-items: baseline;
+}
+
+.fme_efw_form_tab_tabcontent {
+    display: none;
+    padding: 30px;
+}
+
+.fme_efw_form_tab_tabcontent_active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Whatsapp contact styles for front-end */
+.fme_efw_whatsapp_contacts_wrapper,
+.fme_efw_sms_contacts_wrapper {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.fme_efw_whatsapp_contacts_wrapper .fme_efw_whatsapp_contact_item,
+.fme_efw_sms_contacts_wrapper .fme_efw_sms_contact_item {
+    padding: 10px;
+    transition: all 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fme_efw_whatsapp_contacts_wrapper .fme_efw_whatsapp_contact_item:hover,
+.fme_efw_sms_contacts_wrapper .fme_efw_sms_contact_item:hover {
+    background-color: white;
+    transition: all 0.3s;
+}
+
+.fme_efw_whatsapp_contacts_wrapper .fme_efw_whatsapp_contact_item .fme_efw_whatsapp_contact_button,
+.fme_efw_sms_contacts_wrapper .fme_efw_sms_contact_item .fme_efw_sms_contact_button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #b96dff;
+    padding: 5px 8px;
+    transition: all 0.3s;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-left: 80px;
+}
+
+.fme_efw_whatsapp_contacts_wrapper .fme_efw_whatsapp_contact_item .fme_efw_whatsapp_contact_button:hover,
+.fme_efw_sms_contacts_wrapper .fme_efw_sms_contact_item .fme_efw_sms_contact_button:hover {
+    transition: all 0.3s;
+    color: #6d00d3;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 0 10px 10px 0;
+    background: #dfd1d1;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    -webkit-transition: width 2s;
+    transition: width 2s;
+}
+
+.fme-efw-field-help-message {
+    display: block;
+}
+
+@media (max-width: 320px) {
+    body {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .fme_efw_form_layout {
+        width: auto;
+        margin: 30px;
+    }
+
+    .fme_efw_form_tab button {
+        padding: 10px 8px;
+    }
+
+    .fme_efw_form {
+        flex-direction: column;
+        grid-gap: 5px 40px;
+    }
+
+    .fme_efw_form_tab button {
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.02rem;
+        margin-right: 0;
+        border-bottom: 1px solid #808080;
+    }
+
+    .fme_efw_form_tab button:last-child {
+        border-bottom: 0;
+    }
+
+    .fme_efw_form_tab_tabcontent {
+        padding: 20px;
+    }
+
+    .fme_efw_form_tab button>span {
+        display: none;
+    }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .fme_efw_form_layout {
+        width: auto;
+        margin: 30px auto;
+        max-width: 450px;
+    }
+
+    .fme_efw_form_tab button {
+        padding: 10px 8px;
+    }
+
+    .fme_efw_form,
+    .fme_efw_checkbox {
+        flex-direction: column;
+        grid-gap: 5px 40px;
+    }
+
+    .fme_efw_form_tab button {
+        font-size: 12px;
+        font-weight: 400;
+        letter-spacing: 0.02rem;
+    }
+
+    .fme_efw_form_tab button>span {
+        display: none;
+    }
+}
+
+/*# sourceMappingURL=fme_efw_styles_latest.css.map */
+
+.fme-efw-button-wrapper-for-astra {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.fme-efw-button-wrapper-for-astra button {
+    margin: 0px !important;
+}
+
+#efw_enquires_response_filter {
+    margin-bottom: 10px;
+}
