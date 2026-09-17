@@ -109,7 +109,7 @@
          COLLECTIONS GRID
          =================================================== -->
     <section class="rajdeep-collections-section" style="padding: 70px 20px;">
-        <div class="rajdeep-collection-grid">
+        <div class="rajdeep-collection-grid" id="collectionsContainer">
             <!-- 1. Gold Jewellery -->
             <div class="rajdeep-collection-card">
                 <div class="rajdeep-card-media">
@@ -378,7 +378,7 @@
         </div>
 
         <div class="rajdeep-footer-bottom">
-            <p>&copy; 2026 Rajdeep Gold Palace (Rajdeep Jewellers). All Rights Reserved.</p>
+            <p>&copy; 2026 Rajdeep Gold Palace (Rajdeep Jewellers). All Rights Reserved. | Website Made by <a href="https://wa.me/919106602538?text=Hi%20Nevix%2C%20can%20I%20get%20information%20about%20website%20making%20%2F%20development%3F" target="_blank" rel="noopener" style="color: #dfba53; text-decoration: none; font-weight: 500;">Nevix</a></p>
         </div>
     </footer>
 
@@ -414,6 +414,41 @@
                 });
             });
         }
+
+        // Dynamic Collections Loader from Admin API
+        async function loadDynamicCollections() {
+            try {
+                const res = await fetch('/api/collections');
+                if (!res.ok) return;
+                const collections = await res.json();
+                if (!Array.isArray(collections) || collections.length === 0) return;
+
+                const container = document.getElementById('collectionsContainer');
+                if (!container) return;
+
+                container.innerHTML = collections.map(col => {
+                    const link = col.link || `collections/${col.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}/`;
+                    const imgSrc = col.image.startsWith('http') ? col.image : col.image;
+                    return `
+                    <div class="rajdeep-collection-card">
+                        <div class="rajdeep-card-media">
+                            <img src="${imgSrc}" alt="${col.name} at Rajdeep Gold Palace" loading="lazy">
+                        </div>
+                        <div class="rajdeep-card-body">
+                            <h3 class="rajdeep-card-title">${col.name}</h3>
+                            <p class="rajdeep-card-desc">${col.description}</p>
+                            <div style="display: flex; gap: 8px; margin-top: auto;">
+                                <a href="${link}" class="rajdeep-card-btn" style="flex: 1;">VIEW CATEGORY <i class="fas fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+            } catch (err) {
+                // Keep static fallback
+            }
+        }
+        loadDynamicCollections();
     </script>
 </body>
 </html>

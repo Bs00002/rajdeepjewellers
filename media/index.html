@@ -558,7 +558,7 @@
         </div>
 
         <div class="rajdeep-footer-bottom">
-            <p>&copy; 2026 Rajdeep Gold Palace (Rajdeep Jewellers). All Rights Reserved.</p>
+            <p>&copy; 2026 Rajdeep Gold Palace (Rajdeep Jewellers). All Rights Reserved. | Website Made by <a href="https://wa.me/919106602538?text=Hi%20Nevix%2C%20can%20I%20get%20information%20about%20website%20making%20%2F%20development%3F" target="_blank" rel="noopener" style="color: #dfba53; text-decoration: none; font-weight: 500;">Nevix</a></p>
         </div>
     </footer>
 
@@ -597,31 +597,91 @@
                 });
             });
         }
-
         // Category Filter Logic
-        const filterBtns = document.querySelectorAll('.rajdeep-filter-btn');
-        const mediaCards = document.querySelectorAll('#mediaGrid .rajdeep-video-card');
+        function bindFilters() {
+            const filterBtns = document.querySelectorAll('.rajdeep-filter-btn');
+            const mediaCards = document.querySelectorAll('#mediaGrid .rajdeep-video-card');
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const filter = this.getAttribute('data-filter');
+            filterBtns.forEach(btn => {
+                btn.onclick = function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const filter = this.getAttribute('data-filter');
 
-                mediaCards.forEach(card => {
-                    if (filter === 'all') {
-                        card.style.display = 'flex';
-                    } else {
-                        const categories = card.getAttribute('data-category') || '';
-                        if (categories.includes(filter)) {
+                    mediaCards.forEach(card => {
+                        if (filter === 'all') {
                             card.style.display = 'flex';
                         } else {
-                            card.style.display = 'none';
+                            const categories = card.getAttribute('data-category') || '';
+                            if (categories.includes(filter)) {
+                                card.style.display = 'flex';
+                            } else {
+                                card.style.display = 'none';
+                            }
                         }
-                    }
-                });
+                    });
+                };
             });
-        });
+        }
+
+        // Dynamic Media Loader from Backend API
+        async function loadDynamicMedia() {
+            try {
+                const res = await fetch('/api/media');
+                if (!res.ok) { bindFilters(); return; }
+                const items = await res.json();
+                if (!Array.isArray(items) || items.length === 0) { bindFilters(); return; }
+
+                const grid = document.getElementById('mediaGrid');
+                if (!grid) return;
+
+                grid.innerHTML = items.map(item => {
+                    const isVideo = item.media_url.endsWith('.mp4') || item.media_url.endsWith('.webm') || item.type === 'Video' || item.type === 'Reel' || item.type === 'Customer Moment' || item.type === 'Showroom';
+                    const posterAttr = item.poster_url ? `poster="${item.poster_url}"` : '';
+                    const badgeIcon = item.type === 'Customer Moment' ? 'fa-smile' : (item.type === 'Reel' ? 'fa-film' : (item.type === 'Image' ? 'fa-image' : 'fa-gem'));
+                    const cat = item.category || 'all';
+
+                    let mediaContent = '';
+                    if (isVideo && item.media_url.endsWith('.mp4')) {
+                        mediaContent = `
+                            <video controls playsinline preload="metadata" ${posterAttr}>
+                                <source src="${item.media_url}" type="video/mp4">
+                                Your browser does not support HTML5 video.
+                            </video>
+                        `;
+                    } else {
+                        mediaContent = `
+                            <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" style="display: block; height: 100%;">
+                                <img src="${item.media_url}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy">
+                            </a>
+                        `;
+                    }
+
+                    return `
+                    <div class="rajdeep-video-card" data-category="${cat}">
+                        <div class="rajdeep-video-media-wrap">
+                            <span class="rajdeep-video-badge"><i class="fas ${badgeIcon}"></i> ${item.type}</span>
+                            ${mediaContent}
+                        </div>
+                        <div class="rajdeep-video-info">
+                            <h3 class="rajdeep-video-title">${item.title}</h3>
+                            <div class="rajdeep-video-meta">
+                                <i class="fas fa-map-marker-alt"></i> ${item.meta || 'Rajdeep Gold Palace, Bhachau'}
+                            </div>
+                            <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                                Watch on Instagram <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                    `;
+                }).join('');
+
+                bindFilters();
+            } catch (err) {
+                bindFilters();
+            }
+        }
+        loadDynamicMedia();
     </script>
 </body>
 </html>

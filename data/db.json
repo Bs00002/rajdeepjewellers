@@ -1,0 +1,311 @@
+{
+  "admin_user": {
+    "username": "Rajdeep Gold Palace",
+    "password_hash": "554e8f5af60e07d7716673fd424839f7fbf9f74d67ae9a0fc37c2afb815b7035",
+    "salt": "rajdeep_luxury_salt_2026"
+  },
+  "collections": [
+    {
+      "id": "col_1",
+      "name": "Gold Jewellery",
+      "description": "Exquisite 22K (916) Hallmark gold necklaces, bangles, rings and heirloom sets for every celebration.",
+      "image": "images/rajdeep-gold-set.jpg",
+      "link": "collections/gold-jewellery/",
+      "display_order": 1,
+      "is_published": true
+    },
+    {
+      "id": "col_2",
+      "name": "Silver Jewellery",
+      "description": "Authentic 92.5 fine silver rajwadi balaiya, kadas, anklets and handcrafted traditional sets.",
+      "image": "images/rajdeep-media-8.jpg",
+      "link": "collections/silver-jewellery/",
+      "display_order": 2,
+      "is_published": true
+    },
+    {
+      "id": "col_3",
+      "name": "Bridal Jewellery",
+      "description": "Complete wedding bridal sets crafted to bestow majesty and auspicious royal beauty on the bride.",
+      "image": "images/rajdeep-bridal-necklace.jpg",
+      "link": "collections/bridal-jewellery/",
+      "display_order": 3,
+      "is_published": true
+    },
+    {
+      "id": "col_4",
+      "name": "Necklaces",
+      "description": "Intricate designer gold necklaces and chokers crafted for festive galas, celebrations and weddings.",
+      "image": "images/rajdeep-gold-necklace-purity.jpg",
+      "link": "collections/necklaces/",
+      "display_order": 4,
+      "is_published": true
+    },
+    {
+      "id": "col_5",
+      "name": "Bangles",
+      "description": "Traditional handcrafted kadas, filigree gold bangles, and delicate daily-wear designs.",
+      "image": "images/rajdeep-gold-bangles.jpg",
+      "link": "collections/bangles/",
+      "display_order": 5,
+      "is_published": true
+    },
+    {
+      "id": "col_6",
+      "name": "Rings",
+      "description": "Stunning cocktail rings, wedding bands, and handcrafted daily-wear rings in gold and silver.",
+      "image": "images/rajdeep-jewellers-ring-1.jpg",
+      "link": "collections/rings/",
+      "display_order": 6,
+      "is_published": true
+    },
+    {
+      "id": "col_7",
+      "name": "Earrings",
+      "description": "Royal jhumkis, chandbalis, contemporary studs and drop earrings with hallmark purity.",
+      "image": "images/rajdeep-earrings.jpg",
+      "link": "collections/earrings/",
+      "display_order": 7,
+      "is_published": true
+    },
+    {
+      "id": "col_8",
+      "name": "Chains",
+      "description": "Pure hallmark gold chains for gents and ladies in diverse interlocking weaving styles.",
+      "image": "images/rajdeep-gold-chain.jpg",
+      "link": "collections/chains/",
+      "display_order": 8,
+      "is_published": true
+    },
+    {
+      "id": "col_9",
+      "name": "Pendants",
+      "description": "Spiritual, auspicious, and modern minimalist pendants crafted in pure gold and silver.",
+      "image": "images/rajdeep-pendant.jpg",
+      "link": "collections/pendants/",
+      "display_order": 9,
+      "is_published": true
+    },
+    {
+      "id": "col_10",
+      "name": "Mangalsutra",
+      "description": "Sacred wedding mangalsutra designs blending auspicious black beads with fine gold craft.",
+      "image": "images/rajdeep-antique-craft.jpg",
+      "link": "collections/mangalsutra/",
+      "display_order": 10,
+      "is_published": true
+    },
+    {
+      "id": "col_11",
+      "name": "Traditional Jewellery",
+      "description": "Heritage antique ornaments, temple collections, and heirloom Gujarati rajwadi craft.",
+      "image": "images/rajdeep-rani-haar.jpg",
+      "link": "collections/traditional-jewellery/",
+      "display_order": 11,
+      "is_published": true
+    },
+    {
+      "id": "col_12",
+      "name": "Gents Jewellery",
+      "description": "Solid gold and silver bracelets, bold rings, rudraksha chains and auspicious ornaments.",
+      "image": "images/rajdeep-media-5.jpg",
+      "link": "collections/gents-jewellery/",
+      "display_order": 12,
+      "is_published": true
+    }
+  ],
+  "media_items": [
+    {
+      "id": "med_1",
+      "title": "Happy Client",
+      "description": "Real festive moment inside our Bhachau showroom during the Smart Shopping Fest.",
+      "type": "Customer Moment",
+      "category": "festive showroom",
+      "media_url": "videos/rajdeep-smart-shopping-fest-intro.mp4",
+      "poster_url": "images/posters/rajdeep-smart-shopping-fest-intro.jpg",
+      "meta": "Bhachau Showroom Moment",
+      "display_order": 1,
+      "is_published": true
+    },
+    {
+      "id": "med_2",
+      "title": "Smart Shopping Fest Announcement",
+      "description": "Official festival campaign video for Rajdeep Gold Palace Bhachau.",
+      "type": "Promotional",
+      "category": "festive",
+      "media_url": "videos/rajdeep-smart-shopping-fest-promo.mp4",
+      "poster_url": "images/posters/rajdeep-smart-shopping-fest-promo.jpg",
+      "meta": "Official Bhachau Festival Campaign",
+      "display_order": 2,
+      "is_published": true
+    },
+    {
+      "id": "med_3",
+      "title": "1 Purchase = 4 Benefits",
+      "description": "Exclusive festival perks: Stay Voucher, Scratch Card & Showroom Lucky Draw.",
+      "type": "Video",
+      "category": "festive",
+      "media_url": "videos/rajdeep-smart-shopping-fest-benefits.mp4",
+      "poster_url": "images/posters/rajdeep-smart-shopping-fest-benefits.jpg",
+      "meta": "Lucky Draw & Guaranteed Stay Voucher",
+      "display_order": 3,
+      "is_published": true
+    },
+    {
+      "id": "med_4",
+      "title": "Smart Shopping Fest Post",
+      "description": "Authentic promotional artwork celebrating Smart Shopping Fest and our clients.",
+      "type": "Image",
+      "category": "festive showroom",
+      "media_url": "images/rajdeep-smart-shopping-fest.jpg",
+      "poster_url": "images/rajdeep-smart-shopping-fest.jpg",
+      "meta": "Bhachau Showroom Promotional Creative",
+      "display_order": 4,
+      "is_published": true
+    },
+    {
+      "id": "med_5",
+      "title": "Showroom Interior Tour",
+      "description": "Walkthrough of our elegant showroom in Nagarpalika Center-1, Bhachau.",
+      "type": "Showroom",
+      "category": "showroom",
+      "media_url": "videos/rajdeep-showroom-tour.mp4",
+      "poster_url": "images/posters/rajdeep-showroom-tour.jpg",
+      "meta": "Nagarpalika Center-1, Bhachau",
+      "display_order": 5,
+      "is_published": true
+    },
+    {
+      "id": "med_6",
+      "title": "Bridal Emerald & Gold Reel",
+      "description": "Royal wedding ornaments crafted in 916 gold with radiant emerald drops.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-bridal-reel.mp4",
+      "poster_url": "images/posters/rajdeep-bridal-reel.jpg",
+      "meta": "Royal Wedding Ornaments",
+      "display_order": 6,
+      "is_published": true
+    },
+    {
+      "id": "med_7",
+      "title": "Lightweight 916 Gold Necklet",
+      "description": "Exquisite 6.300g hallmark gold necklet with Bhachau showroom seal.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-gold-necklet-6g.mp4",
+      "poster_url": "images/posters/rajdeep-gold-necklet-6g.jpg",
+      "meta": "6.300g Hallmark Seal",
+      "display_order": 7,
+      "is_published": true
+    },
+    {
+      "id": "med_8",
+      "title": "Gold Necklace & Jhumkis Set",
+      "description": "Handcrafted floral filigree gold necklace with matching designer earrings.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-gold-necklace-set.mp4",
+      "poster_url": "images/posters/rajdeep-gold-necklace-set.jpg",
+      "meta": "Handcrafted Floral Filigree",
+      "display_order": 8,
+      "is_published": true
+    },
+    {
+      "id": "med_9",
+      "title": "Royal Handcrafted Gold Choker",
+      "description": "Traditional gold choker designed for grand wedding celebrations.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-gold-choker.mp4",
+      "poster_url": "images/posters/rajdeep-gold-choker.jpg",
+      "meta": "Authentic Showroom Display",
+      "display_order": 9,
+      "is_published": true
+    },
+    {
+      "id": "med_10",
+      "title": "Grand 916 Royal Gold Haar",
+      "description": "Heirloom long necklace authenticated with Bhachau showroom hallmark.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-royal-gold-haar.mp4",
+      "poster_url": "images/posters/rajdeep-royal-gold-haar.jpg",
+      "meta": "Rajdeep Hallmark Authenticity Seal",
+      "display_order": 10,
+      "is_published": true
+    },
+    {
+      "id": "med_11",
+      "title": "Gold Watch & Filigree Bracelet",
+      "description": "Statement gold watch design with handcrafted filigree bracelet.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-gold-watch-bracelet.mp4",
+      "poster_url": "images/posters/rajdeep-gold-watch-bracelet.jpg",
+      "meta": "Hallmark 916 Pure Gold",
+      "display_order": 11,
+      "is_published": true
+    },
+    {
+      "id": "med_12",
+      "title": "Handcrafted Solid Gold Chain",
+      "description": "Daily and festive wear solid gold chain with hallmarked durability.",
+      "type": "Reel",
+      "category": "gold",
+      "media_url": "videos/rajdeep-gold-chain.mp4",
+      "poster_url": "images/posters/rajdeep-gold-chain.jpg",
+      "meta": "Pure Gold Gents & Ladies Design",
+      "display_order": 12,
+      "is_published": true
+    },
+    {
+      "id": "med_13",
+      "title": "Silver Rajwadi Balaiya",
+      "description": "Traditional handcrafted 92.5 fine silver balaiya bangles.",
+      "type": "Reel",
+      "category": "silver",
+      "media_url": "videos/rajdeep-silver-rajwadi-balaiya.mp4",
+      "poster_url": "images/posters/rajdeep-silver-rajwadi-balaiya.jpg",
+      "meta": "Traditional Handcrafted Balaiya",
+      "display_order": 13,
+      "is_published": true
+    },
+    {
+      "id": "med_14",
+      "title": "Silver Rajwadi Kangan",
+      "description": "Authentic silver rajwadi kangan on showroom authenticity stand.",
+      "type": "Reel",
+      "category": "silver",
+      "media_url": "videos/rajdeep-silver-rajwadi-kangan.mp4",
+      "poster_url": "images/posters/rajdeep-silver-rajwadi-kangan.jpg",
+      "meta": "Showroom Authenticity Display",
+      "display_order": 14,
+      "is_published": true
+    },
+    {
+      "id": "med_15",
+      "title": "Silver Rajwadi Jhalar Haar",
+      "description": "Fine 92.5 silver bridal jhalar necklace with matching earrings.",
+      "type": "Reel",
+      "category": "silver",
+      "media_url": "videos/rajdeep-silver-rajwadi-haar.mp4",
+      "poster_url": "images/posters/rajdeep-silver-rajwadi-haar.jpg",
+      "meta": "Matching Earrings with Showroom Card",
+      "display_order": 15,
+      "is_published": true
+    },
+    {
+      "id": "med_16",
+      "title": "Rajdeep Gold Palace Showcase",
+      "description": "Signature bridal showcase from Rajdeep Gold Palace Bhachau.",
+      "type": "Video",
+      "category": "gold showroom",
+      "media_url": "videos/rajdeep-promo-reel.mp4",
+      "poster_url": "images/posters/rajdeep-promo-reel.jpg",
+      "meta": "Bhachau \u2022 +91 98257 49749",
+      "display_order": 16,
+      "is_published": true
+    }
+  ]
+}
