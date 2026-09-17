@@ -1,29 +1,29 @@
-# Rajdeep Jewellers - Kalol, Gujarat
+# Rajdeep Gold Palace - Bhachau, Kutch, Gujarat
 
-Official website for **Rajdeep Jewellers**, a premier jewellery showroom located in Kalol, Gandhinagar, Gujarat.
+Official website for **Rajdeep Gold Palace**, dealer of fine gold and silver ornaments located in Bhachau, Kutch, Gujarat.
 
 ## Showroom & Business Details
 
-- **Business Name**: Rajdeep Jewellers
-- **Address**: 18, Sree Vaibhav Complex, Khunibanglo Cross Road, Near Head Post Office, Kalol, Gandhinagar, Gujarat - 382721, India
-- **Phone**: +91 84889 95355 (08488 995355)
-- **Email**: rajdeep.jewellers1@gmail.com
+- **Business Name**: Rajdeep Gold Palace
+- **Description / Tagline**: Dealer of Gold & Silver Ornament
+- **Address**: Nagarpalika Shopping Center-1, Bhachau, Kutch, Gujarat – 370140
+- **Contacts**:
+  - Rajesh Patadiya: +91 98257 49749
+  - Piyush Patadiya: +91 94280 85101
 - **Instagram**: [@rajdeepjewellers80](https://www.instagram.com/rajdeepjewellers80/)
 
 ## Features
 
 - **Luxury Indian Aesthetic**: Deep Charcoal, Black, and Metallic Gold design system.
 - **Product Collections**:
-  - 916 Hallmarked Gold Jewellery
-  - Certified Diamonds & Solitaires
-  - 92.5 Sterling Silver Ornaments
-  - Grand Bridal Neckpieces & Rani Haars
-  - Cocktail Rings & Wedding Bands
-  - Handcrafted Gold Bangles & Kadas
-  - Solid Gold Chains & Sacred Mangalsutras
-- **Interactive Bespoke Atelier**: Custom Jewellery enquiry form connecting directly to WhatsApp and phone.
-- **Showroom Location & Directions**: Embedded Google Maps pinned to Kalol GPO / Khunibanglo Cross Road.
-- **Instagram Media Integration**: Local media assets from verified posts.
+  - Gold Jewellery & Grand Bridal Sets
+  - Fine Silver Ornaments & Articles
+  - Traditional Rani Haars & Antique Sets
+  - Gold Bangles, Kadas & Chains
+  - Rings, Earrings, Pendants & Auspicious Mangalsutras
+- **Custom Jewellery Atelier**: Direct enquiry form to consult on personalized jewellery designs.
+- **Authentic Showroom & Visuals**: Real photography from the Bhachau showroom and original jewellery post archives.
+- **Showroom Location & Directions**: Embedded Google Maps pinned to Nagarpalika Shopping Center-1, Bhachau, Kutch.
 - **Local SEO & Schema.org**: Fully structured `JewelryStore` JSON-LD schema, OpenGraph tags, sitemap, and robots.txt.
 - **Mobile Optimized**: Floating quick-contact actions and sticky mobile action bar for instant showroom enquiries.
 

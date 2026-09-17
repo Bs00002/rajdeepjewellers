@@ -1,6 +1,6 @@
 /* ==========================================================================
    RAJDEEP JEWELLERS - LUXURY THEME STYLING
-   Kalol, Gujarat
+   Bhachau, Kutch, Gujarat
    ========================================================================== */
 
 :root {
@@ -222,8 +222,8 @@ h1, h2, h3, .rajdeep-serif {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0.38;
-  filter: brightness(0.9);
+  object-position: center 40%;
+  opacity: 1;
 }
 
 .rajdeep-hero-overlay {
@@ -232,37 +232,42 @@ h1, h2, h3, .rajdeep-serif {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at center, rgba(12,13,16,0.5) 0%, rgba(12,13,16,0.95) 85%);
+  background: radial-gradient(ellipse 65% 50% at 50% 50%, rgba(0, 0, 0, 0.14) 0%, rgba(0, 0, 0, 0.05) 50%, transparent 80%);
+  pointer-events: none;
 }
 
 .rajdeep-hero-content {
   position: relative;
   z-index: 2;
-  max-width: 900px;
+  max-width: 820px;
   margin: 0 auto;
   text-align: center;
-  padding: 60px 20px;
+  padding: 80px 24px;
 }
 
 .rajdeep-hero-badge {
   display: inline-block;
-  font-size: 12px;
-  letter-spacing: 4px;
+  font-size: 13px;
+  letter-spacing: 5px;
   text-transform: uppercase;
   color: #dfba53;
-  border: 1px solid var(--rajdeep-border-gold);
-  padding: 6px 18px;
-  border-radius: 50px;
-  margin-bottom: 24px;
-  background: rgba(212, 175, 55, 0.08);
+  font-weight: 600;
+  margin-bottom: 22px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  background: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
 }
 
 .rajdeep-hero-title {
-  font-size: 48px;
-  line-height: 1.25;
+  font-size: 38px;
+  line-height: 1.4;
   color: #ffffff;
-  margin-bottom: 20px;
-  font-weight: 700;
+  margin-bottom: 36px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.95), 0 4px 20px rgba(0, 0, 0, 0.75), 0 0 35px rgba(0, 0, 0, 0.4);
 }
 
 .rajdeep-hero-subtitle {
@@ -303,7 +308,8 @@ h1, h2, h3, .rajdeep-serif {
 .rajdeep-btn-outline {
   border: 1.5px solid #dfba53;
   color: #dfba53 !important;
-  background: transparent;
+  background: rgba(12, 13, 16, 0.45);
+  backdrop-filter: blur(6px);
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 1.5px;
@@ -785,26 +791,7 @@ h1, h2, h3, .rajdeep-serif {
 }
 
 .rajdeep-floating-call {
-  position: fixed;
-  bottom: 86px;
-  right: 24px;
-  width: 50px;
-  height: 50px;
-  background: var(--rajdeep-gold-gradient);
-  color: #0c0d10 !important;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  box-shadow: 0 4px 16px rgba(212, 175, 55, 0.4);
-  z-index: 9998;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.rajdeep-floating-call:hover {
-  transform: scale(1.1);
+  display: none !important;
 }
 
 /* Mobile Sticky Bottom Bar */
@@ -879,7 +866,8 @@ h1, h2, h3, .rajdeep-serif {
     display: block;
   }
   .rajdeep-hero-title {
-    font-size: 32px;
+    font-size: 26px;
+    line-height: 1.35;
   }
   .rajdeep-story-grid, .rajdeep-custom-container, .rajdeep-contact-grid {
     grid-template-columns: 1fr;
