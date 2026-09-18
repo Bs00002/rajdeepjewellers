@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://localhost:8080/sitemap.xml
+Sitemap: https://rajdeepjewellers-bs00002s-projects.vercel.app/sitemap.xml
