@@ -667,7 +667,7 @@
                     </button>
                 </li>
                 <li style="margin-top: 10px;">
-                    <a href="../index.html" target="_blank" class="nav-item-btn" style="text-decoration: none;">
+                    <a href="/index.html" target="_blank" class="nav-item-btn" style="text-decoration: none;">
                         <i class="fas fa-external-link-alt"></i> View Website
                     </a>
                 </li>
@@ -828,10 +828,10 @@
                             </label>
                         </div>
                         <!-- Preset selector for existing project assets -->
-                        <select class="form-control" onchange="if(this.value){ document.getElementById('colImage').value = this.value; document.getElementById('colImagePreview').src = '../' + this.value; }" style="font-size: 12px; margin-bottom: 8px;">
+                        <select class="form-control" onchange="if(this.value){ document.getElementById('colImage').value = this.value; const prev = document.getElementById('colImagePreview'); prev.src = resolveAssetUrl(this.value); prev.style.display = 'block'; }" style="font-size: 12px; margin-bottom: 8px;">
                             <option value="">-- Or choose from existing Rajdeep photos --</option>
                             <option value="images/rajdeep-gold-set.jpg">Gold Necklace Set (Gold)</option>
-                            <option value="images/rajdeep-media-8.jpg">Silver Rajwadi Jhalar Haar (Silver)</option>
+                            <option value="images/rajdeep-media-8.jpg">Silver Royal Jhalar Haar (Silver)</option>
                             <option value="images/rajdeep-bridal-necklace.jpg">Bridal Gold Necklace (Bridal)</option>
                             <option value="images/rajdeep-gold-necklace-purity.jpg">Hallmark Necklace (Necklaces)</option>
                             <option value="images/rajdeep-gold-bangles.jpg">Gold Bangles &amp; Kadas (Bangles)</option>
@@ -839,9 +839,9 @@
                             <option value="images/rajdeep-earrings.jpg">Royal Gold Earrings (Earrings)</option>
                             <option value="images/rajdeep-gold-chain.jpg">Solid Gold Chain (Chains)</option>
                             <option value="images/rajdeep-pendant.jpg">Gold &amp; Diamond Pendant (Pendants)</option>
-                            <option value="images/rajdeep-antique-craft.jpg">Traditional Mangalsutra (Mangalsutra)</option>
+                            <option value="images/rajdeep-mangalsutra.jpg">Sacred Gold Mangalsutra (Mangalsutra)</option>
                             <option value="images/rajdeep-rani-haar.jpg">Royal Rani Haar (Traditional)</option>
-                            <option value="images/rajdeep-media-5.jpg">Gents Solid Chain/Kada (Gents)</option>
+                            <option value="images/rajdeep-media-4.jpg">Gents Solid 916 Chain/Bracelet (Gents)</option>
                         </select>
                         <img id="colImagePreview" src="" alt="Preview" style="height: 90px; border-radius: 6px; border: 1px solid var(--border-color); display: none; margin-top: 6px;">
                     </div>
@@ -942,6 +942,13 @@
         // State
         let currentTab = 'dashboard';
 
+        // URL Resolver Helper
+        function resolveAssetUrl(url) {
+            if (!url) return '';
+            if (url.startsWith('http://') || url.startsWith('https://')) return url;
+            return '/' + url.replace(/^\.?\/?/, '');
+        }
+
         // Toast Helper
         function showToast(message, isError = false) {
             const container = document.getElementById('toastContainer');
@@ -965,9 +972,15 @@
                     document.getElementById('loginView').style.display = 'none';
                     document.getElementById('adminApp').style.display = 'flex';
                     document.getElementById('activeUserLabel').textContent = data.username || 'Rajdeep Gold Palace';
-                    loadDashboardStats();
-                    loadCollections();
-                    loadMedia();
+                    
+                    const path = window.location.pathname;
+                    if (path.includes('/collections')) {
+                        switchTab('collections');
+                    } else if (path.includes('/media')) {
+                        switchTab('media');
+                    } else {
+                        switchTab(currentTab || 'dashboard');
+                    }
                 } else {
                     document.getElementById('loginView').style.display = 'flex';
                     document.getElementById('adminApp').style.display = 'none';
@@ -1099,7 +1112,7 @@
 
             collectionsData.forEach(col => {
                 const tr = document.createElement('tr');
-                const imgSrc = col.image.startsWith('http') || col.image.startsWith('uploads/') ? `../${col.image}` : `../${col.image}`;
+                const imgSrc = resolveAssetUrl(col.image);
                 tr.innerHTML = `
                     <td><img src="${imgSrc}" class="table-thumb" alt="${col.name}"></td>
                     <td><strong style="color: #fff;">${col.name}</strong></td>
@@ -1144,7 +1157,7 @@
             document.getElementById('colPublished').value = col.is_published ? 'true' : 'false';
 
             const preview = document.getElementById('colImagePreview');
-            preview.src = col.image.startsWith('http') || col.image.startsWith('uploads/') ? `../${col.image}` : `../${col.image}`;
+            preview.src = resolveAssetUrl(col.image);
             preview.style.display = 'block';
 
             document.getElementById('collectionModalTitle').textContent = 'Edit Collection';
@@ -1225,7 +1238,7 @@
 
             mediaData.forEach(med => {
                 const tr = document.createElement('tr');
-                const thumbSrc = med.poster_url ? `../${med.poster_url}` : (med.media_url.endsWith('.mp4') ? '../images/favicon.png' : `../${med.media_url}`);
+                const thumbSrc = med.poster_url ? resolveAssetUrl(med.poster_url) : (med.media_url.endsWith('.mp4') ? '/images/favicon.png' : resolveAssetUrl(med.media_url));
                 tr.innerHTML = `
                     <td><img src="${thumbSrc}" class="table-thumb" alt="${med.title}"></td>
                     <td><strong style="color: #fff;">${med.title}</strong></td>
@@ -1364,7 +1377,7 @@
                     const data = await res.json();
                     document.getElementById(targetFieldId).value = data.url;
                     const preview = document.getElementById(previewId);
-                    preview.src = `../${data.url}`;
+                    preview.src = resolveAssetUrl(data.url);
                     preview.style.display = 'block';
                     showToast('Saved successfully.');
                 } else {

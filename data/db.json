@@ -17,7 +17,7 @@
     {
       "id": "col_2",
       "name": "Silver Jewellery",
-      "description": "Authentic 92.5 fine silver rajwadi balaiya, kadas, anklets and handcrafted traditional sets.",
+      "description": "Authentic 92.5 fine silver heritage royal balaiya, kadas, anklets and handcrafted traditional sets.",
       "image": "images/rajdeep-media-8.jpg",
       "link": "collections/silver-jewellery/",
       "display_order": 2,
@@ -90,7 +90,7 @@
       "id": "col_10",
       "name": "Mangalsutra",
       "description": "Sacred wedding mangalsutra designs blending auspicious black beads with fine gold craft.",
-      "image": "images/rajdeep-antique-craft.jpg",
+      "image": "images/rajdeep-mangalsutra.jpg",
       "link": "collections/mangalsutra/",
       "display_order": 10,
       "is_published": true
@@ -98,7 +98,7 @@
     {
       "id": "col_11",
       "name": "Traditional Jewellery",
-      "description": "Heritage antique ornaments, temple collections, and heirloom Gujarati rajwadi craft.",
+      "description": "Heritage antique ornaments, temple collections, and heirloom Gujarati royal craft.",
       "image": "images/rajdeep-rani-haar.jpg",
       "link": "collections/traditional-jewellery/",
       "display_order": 11,
@@ -108,7 +108,7 @@
       "id": "col_12",
       "name": "Gents Jewellery",
       "description": "Solid gold and silver bracelets, bold rings, rudraksha chains and auspicious ornaments.",
-      "image": "images/rajdeep-media-5.jpg",
+      "image": "images/rajdeep-media-4.jpg",
       "link": "collections/gents-jewellery/",
       "display_order": 12,
       "is_published": true
@@ -261,36 +261,36 @@
     },
     {
       "id": "med_13",
-      "title": "Silver Rajwadi Balaiya",
+      "title": "Silver Royal Balaiya",
       "description": "Traditional handcrafted 92.5 fine silver balaiya bangles.",
       "type": "Reel",
       "category": "silver",
-      "media_url": "videos/rajdeep-silver-rajwadi-balaiya.mp4",
-      "poster_url": "images/posters/rajdeep-silver-rajwadi-balaiya.jpg",
+      "media_url": "videos/rajdeep-silver-royal-balaiya.mp4",
+      "poster_url": "images/posters/rajdeep-silver-royal-balaiya.jpg",
       "meta": "Traditional Handcrafted Balaiya",
       "display_order": 13,
       "is_published": true
     },
     {
       "id": "med_14",
-      "title": "Silver Rajwadi Kangan",
-      "description": "Authentic silver rajwadi kangan on showroom authenticity stand.",
+      "title": "Silver Royal Kangan",
+      "description": "Authentic silver royal kangan on showroom authenticity stand.",
       "type": "Reel",
       "category": "silver",
-      "media_url": "videos/rajdeep-silver-rajwadi-kangan.mp4",
-      "poster_url": "images/posters/rajdeep-silver-rajwadi-kangan.jpg",
+      "media_url": "videos/rajdeep-silver-royal-kangan.mp4",
+      "poster_url": "images/posters/rajdeep-silver-royal-kangan.jpg",
       "meta": "Showroom Authenticity Display",
       "display_order": 14,
       "is_published": true
     },
     {
       "id": "med_15",
-      "title": "Silver Rajwadi Jhalar Haar",
+      "title": "Silver Royal Jhalar Haar",
       "description": "Fine 92.5 silver bridal jhalar necklace with matching earrings.",
       "type": "Reel",
       "category": "silver",
-      "media_url": "videos/rajdeep-silver-rajwadi-haar.mp4",
-      "poster_url": "images/posters/rajdeep-silver-rajwadi-haar.jpg",
+      "media_url": "videos/rajdeep-silver-royal-haar.mp4",
+      "poster_url": "images/posters/rajdeep-silver-royal-haar.jpg",
       "meta": "Matching Earrings with Showroom Card",
       "display_order": 15,
       "is_published": true
@@ -303,7 +303,7 @@
       "category": "gold showroom",
       "media_url": "videos/rajdeep-promo-reel.mp4",
       "poster_url": "images/posters/rajdeep-promo-reel.jpg",
-      "meta": "Bhachau \u2022 +91 98257 49749",
+      "meta": "Bhachau • +91 98257 49749",
       "display_order": 16,
       "is_published": true
     }
