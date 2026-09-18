@@ -134,10 +134,323 @@
 
             <!-- Media Cards Grid -->
             <div class="rajdeep-video-grid" id="mediaGrid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px;">
-                <!-- Dynamically loaded from /api/media -->
-                <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px; color: var(--rajdeep-text-muted);">
-                    <i class="fas fa-spinner fa-spin" style="font-size: 28px; color: var(--rajdeep-gold-primary); margin-bottom: 12px; display: block;"></i>
-                    Loading showroom media and reels...
+<!-- 1. Happy Client Video -->
+                <div class="rajdeep-video-card" data-category="festive showroom">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-smile"></i> Happy Client</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-smart-shopping-fest-intro.jpg">
+                            <source src="videos/rajdeep-smart-shopping-fest-intro.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Happy Client</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-map-marker-alt"></i> Bhachau Showroom Moment
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 2. Smart Shopping Fest Promotional Video -->
+                <div class="rajdeep-video-card" data-category="festive">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-bullhorn"></i> Campaign Reel</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-smart-shopping-fest-promo.jpg">
+                            <source src="videos/rajdeep-smart-shopping-fest-promo.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Smart Shopping Fest Announcement</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-award"></i> Official Bhachau Festival Campaign
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 3. Smart Shopping Fest 4 Benefits Video -->
+                <div class="rajdeep-video-card" data-category="festive">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-gift"></i> 4 Benefits</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-smart-shopping-fest-benefits.jpg">
+                            <source src="videos/rajdeep-smart-shopping-fest-benefits.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">1 Purchase = 4 Benefits</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-trophy"></i> Lucky Draw &amp; Guaranteed Stay Voucher
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 4. Real Smart Shopping Fest Artwork Post -->
+                <div class="rajdeep-video-card" data-category="festive showroom">
+                    <div class="rajdeep-video-media-wrap" style="aspect-ratio: 9 / 16;">
+                        <span class="rajdeep-video-badge"><i class="fas fa-image"></i> Promotional Post</span>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" style="display: block; height: 100%;">
+                            <img src="images/rajdeep-smart-shopping-fest.jpg" alt="Smart Shopping Fest Jewellery Edition at Rajdeep Gold Palace" style="width: 100%; height: 100%; object-fit: cover; display: block;">
+                        </a>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Smart Shopping Fest Post</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-store"></i> Bhachau Showroom Promotional Creative
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            View on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 5. Showroom Walkthrough Tour -->
+                <div class="rajdeep-video-card" data-category="showroom">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-store"></i> Showroom Tour</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-showroom-tour.jpg">
+                            <source src="videos/rajdeep-showroom-tour.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Showroom Interior Tour</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-gem"></i> Nagarpalika Center-1, Bhachau
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 6. Bridal Emerald & Gold Jewellery Reel -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-crown"></i> Bridal Reel</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-bridal-reel.jpg">
+                            <source src="videos/rajdeep-bridal-reel.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Bridal Emerald &amp; Gold Reel</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-ring"></i> Royal Wedding Ornaments
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 7. Hallmark 916 Gold Necklet (6.300g) -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-certificate"></i> 916 Hallmark</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-gold-necklet-6g.jpg">
+                            <source src="videos/rajdeep-gold-necklet-6g.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Lightweight 916 Gold Necklet</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-feather"></i> 6.300g Hallmark Seal
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 8. Royal Gold Necklace & Earrings Set -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-gem"></i> Gold Set</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-gold-necklace-set.jpg">
+                            <source src="videos/rajdeep-gold-necklace-set.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Gold Necklace &amp; Jhumkis Set</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-sparkles"></i> Handcrafted Floral Filigree
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 9. Royal Handcrafted Gold Choker -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-crown"></i> Gold Choker</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-gold-choker.jpg">
+                            <source src="videos/rajdeep-gold-choker.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Royal Handcrafted Gold Choker</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-star"></i> Authentic Showroom Display
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 10. Grand 916 Royal Gold Haar -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-medal"></i> Royal Haar</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-royal-gold-haar.jpg">
+                            <source src="videos/rajdeep-royal-gold-haar.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Grand 916 Royal Gold Haar</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-certificate"></i> Rajdeep Hallmark Authenticity Seal
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 11. Gold Watch and Filigree Bracelet -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-clock"></i> Gold Watch</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-gold-watch-bracelet.jpg">
+                            <source src="videos/rajdeep-gold-watch-bracelet.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Gold Watch &amp; Filigree Bracelet</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-shield-alt"></i> Hallmark 916 Pure Gold
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 12. Solid Gold Chain & Bracelet -->
+                <div class="rajdeep-video-card" data-category="gold">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-link"></i> Gold Chain</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-gold-chain.jpg">
+                            <source src="videos/rajdeep-gold-chain.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Handcrafted Solid Gold Chain</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-check-circle"></i> Pure Gold Gents &amp; Ladies Design
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 13. 92.5 Silver Royal Balaiya Bangles -->
+                <div class="rajdeep-video-card" data-category="silver">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-coins"></i> 92.5 Silver</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-silver-royal-balaiya.jpg">
+                            <source src="videos/rajdeep-silver-royal-balaiya.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Silver Royal Balaiya</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-ring"></i> Traditional Handcrafted Balaiya
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 14. 92.5 Silver Royal Kangan -->
+                <div class="rajdeep-video-card" data-category="silver">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-coins"></i> 92.5 Silver</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-silver-royal-kangan.jpg">
+                            <source src="videos/rajdeep-silver-royal-kangan.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Silver Royal Kangan</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-sparkles"></i> Showroom Authenticity Display
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 15. 92.5 Silver Royal Jhalar Haar -->
+                <div class="rajdeep-video-card" data-category="silver">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-gem"></i> Silver Haar</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-silver-royal-haar.jpg">
+                            <source src="videos/rajdeep-silver-royal-haar.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Silver Royal Jhalar Haar</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-tag"></i> Matching Earrings with Showroom Card
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 16. Rajdeep Gold Palace Showcase Reel -->
+                <div class="rajdeep-video-card" data-category="gold showroom">
+                    <div class="rajdeep-video-media-wrap">
+                        <span class="rajdeep-video-badge"><i class="fas fa-play"></i> Showcase</span>
+                        <video controls playsinline preload="metadata" poster="images/posters/rajdeep-promo-reel.jpg">
+                            <source src="videos/rajdeep-promo-reel.mp4" type="video/mp4">
+                            Your browser does not support HTML5 video.
+                        </video>
+                    </div>
+                    <div class="rajdeep-video-info">
+                        <h3 class="rajdeep-video-title">Rajdeep Gold Palace Showcase</h3>
+                        <div class="rajdeep-video-meta">
+                            <i class="fas fa-phone-alt"></i> Bhachau • +91 98257 49749
+                        </div>
+                        <a href="https://www.instagram.com/rajdeepjewellers80/" target="_blank" rel="noopener" class="rajdeep-video-cta">
+                            Watch on Instagram <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
 
@@ -311,16 +624,29 @@
             });
         }
 
-        // Dynamic Media Loader from Backend API
+        // Dynamic Media Loader from Backend API with static fallback
         async function loadDynamicMedia() {
             const grid = document.getElementById('mediaGrid');
             if (!grid) return;
             try {
-                const res = await fetch('/api/media');
-                if (!res.ok) throw new Error('API failed');
-                const items = await res.json();
+                let items = null;
+                try {
+                    const res = await fetch('/api/media');
+                    if (res.ok) items = await res.json();
+                } catch(e) {}
+
                 if (!Array.isArray(items) || items.length === 0) {
-                    grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #9ca3af; padding: 40px;">No media items published at this time.</p>';
+                    try {
+                        const fallbackRes = await fetch('/data/db.json');
+                        if (fallbackRes.ok) {
+                            const dbData = await fallbackRes.json();
+                            items = (dbData.media_items || []).filter(m => m.is_published !== false);
+                        }
+                    } catch(e) {}
+                }
+
+                if (!Array.isArray(items) || items.length === 0) {
+                    // Pre-rendered video cards stay active!
                     bindFilters();
                     return;
                 }
@@ -371,7 +697,7 @@
 
                 bindFilters();
             } catch (err) {
-                grid.innerHTML = '<p style="grid-column: 1/-1; text-align: center; color: #9ca3af; padding: 40px;">Could not load media at this time.</p>';
+                // If anything fails, keep pre-rendered cards!
                 bindFilters();
             }
         }
