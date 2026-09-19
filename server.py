@@ -13,89 +13,31 @@ from pydantic import BaseModel
 app = FastAPI(title="Rajdeep Jewellers Backend & CMS", docs_url=None, redoc_url=None)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-READONLY_DATA_FILE = os.path.join(BASE_DIR, "data", "db.json")
-VERCEL_TMP_DATA_FILE = "/tmp/db.json"
-
+DATA_FILE = os.path.join(BASE_DIR, "data", "db.json")
 UPLOADS_DIR = os.path.join(BASE_DIR, "uploads")
-try:
-    os.makedirs(UPLOADS_DIR, exist_ok=True)
-except (OSError, PermissionError):
-    UPLOADS_DIR = "/tmp/uploads"
-    os.makedirs(UPLOADS_DIR, exist_ok=True)
+os.makedirs(UPLOADS_DIR, exist_ok=True)
 
 # Thread lock for atomic JSON database writes
 db_lock = threading.Lock()
 
-import hmac
-import base64
-
-# Active sessions secret and duration
+# Active sessions store: {token: {"username": ..., "timestamp": ...}}
+ACTIVE_SESSIONS = {}
 SESSION_COOKIE_NAME = "rajdeep_admin_session"
 SESSION_DURATION = 86400 * 7  # 7 days
-SESSION_SECRET_KEY = os.environ.get("SESSION_SECRET", "rajdeep_luxury_auth_key_2026_bhachau").encode("utf-8")
-
-def create_session_token(username: str) -> str:
-    ts = str(int(time.time()))
-    payload = f"{username}|{ts}"
-    sig = hmac.new(SESSION_SECRET_KEY, payload.encode("utf-8"), hashlib.sha256).hexdigest()
-    token_str = f"{payload}:{sig}"
-    return base64.urlsafe_b64encode(token_str.encode("utf-8")).decode("utf-8")
-
-def verify_session_token(token: str) -> Optional[str]:
-    try:
-        raw = base64.urlsafe_b64decode(token.encode("utf-8")).decode("utf-8")
-        parts = raw.split(":")
-        if len(parts) != 2:
-            return None
-        payload, sig = parts[0], parts[1]
-        expected_sig = hmac.new(SESSION_SECRET_KEY, payload.encode("utf-8"), hashlib.sha256).hexdigest()
-        if not hmac.compare_digest(sig, expected_sig):
-            return None
-        username, ts_str = payload.split("|")
-        ts = int(ts_str)
-        if time.time() - ts > SESSION_DURATION:
-            return None
-        return username
-    except Exception:
-        return None
-
-def get_data_file_path():
-    is_serverless = bool(os.environ.get("VERCEL") or os.environ.get("AWS_LAMBDA_FUNCTION_NAME"))
-    if is_serverless:
-        if not os.path.exists(VERCEL_TMP_DATA_FILE) and os.path.exists(READONLY_DATA_FILE):
-            import shutil
-            try:
-                shutil.copyfile(READONLY_DATA_FILE, VERCEL_TMP_DATA_FILE)
-            except Exception:
-                return READONLY_DATA_FILE
-        if os.path.exists(VERCEL_TMP_DATA_FILE):
-            return VERCEL_TMP_DATA_FILE
-    return READONLY_DATA_FILE
 
 def load_db():
     with db_lock:
-        data_path = get_data_file_path()
-        if not os.path.exists(data_path):
-            if os.path.exists(READONLY_DATA_FILE):
-                data_path = READONLY_DATA_FILE
-            else:
-                raise RuntimeError("Database file not found.")
-        with open(data_path, "r", encoding="utf-8") as f:
+        if not os.path.exists(DATA_FILE):
+            raise RuntimeError("Database file not found. Please run scratch/init_db.py")
+        with open(DATA_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
 
 def save_db(data):
     with db_lock:
-        data_path = get_data_file_path()
-        try:
-            temp_file = data_path + ".tmp"
-            with open(temp_file, "w", encoding="utf-8") as f:
-                json.dump(data, f, indent=2, ensure_ascii=False)
-            os.replace(temp_file, data_path)
-        except (OSError, PermissionError):
-            temp_file = VERCEL_TMP_DATA_FILE + ".tmp"
-            with open(temp_file, "w", encoding="utf-8") as f:
-                json.dump(data, f, indent=2, ensure_ascii=False)
-            os.replace(temp_file, VERCEL_TMP_DATA_FILE)
+        temp_file = DATA_FILE + ".tmp"
+        with open(temp_file, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+        os.replace(temp_file, DATA_FILE)
 
 # Auth helper
 def get_session_token(request: Request) -> Optional[str]:
@@ -109,12 +51,13 @@ def get_session_token(request: Request) -> Optional[str]:
 
 def require_admin(request: Request):
     token = get_session_token(request)
-    if not token:
+    if not token or token not in ACTIVE_SESSIONS:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Not authenticated")
-    username = verify_session_token(token)
-    if not username:
-        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired or invalid")
-    return username
+    session = ACTIVE_SESSIONS[token]
+    if time.time() - session["timestamp"] > SESSION_DURATION:
+        del ACTIVE_SESSIONS[token]
+        raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Session expired")
+    return session["username"]
 
 # Models
 class LoginRequest(BaseModel):
@@ -158,7 +101,11 @@ async def login(req: LoginRequest, response: Response):
     if req.username.strip() != expected_user or provided_hash != expected_hash:
         raise HTTPException(status_code=401, detail="Invalid username or password")
 
-    token = create_session_token(expected_user)
+    token = secrets.token_urlsafe(32)
+    ACTIVE_SESSIONS[token] = {
+        "username": expected_user,
+        "timestamp": time.time()
+    }
 
     # Set secure cookie
     response.set_cookie(
@@ -173,16 +120,17 @@ async def login(req: LoginRequest, response: Response):
 
 @app.post("/api/logout")
 async def logout(request: Request, response: Response):
+    token = get_session_token(request)
+    if token and token in ACTIVE_SESSIONS:
+        del ACTIVE_SESSIONS[token]
     response.delete_cookie(key=SESSION_COOKIE_NAME, path="/")
     return {"status": "logged_out"}
 
 @app.get("/api/session")
 async def check_session(request: Request):
     token = get_session_token(request)
-    if token:
-        username = verify_session_token(token)
-        if username:
-            return {"authenticated": True, "username": username}
+    if token and token in ACTIVE_SESSIONS:
+        return {"authenticated": True, "username": ACTIVE_SESSIONS[token]["username"]}
     return {"authenticated": False}
 
 @app.get("/api/stats")
@@ -347,28 +295,12 @@ async def upload_file(file: UploadFile = File(...), user: str = Depends(require_
 
 @app.get("/admin", response_class=HTMLResponse)
 @app.get("/admin/{path:path}", response_class=HTMLResponse)
-async def admin_page(request: Request, path: str = ""):
-    token = get_session_token(request)
-    is_authed = bool(token and verify_session_token(token))
-    
-    # If unauthenticated and trying to access sub-paths like /admin/collections or /admin/media, redirect to /admin
-    if path and not is_authed:
-        return RedirectResponse(url="/admin", status_code=302)
-        
+async def admin_page(request: Request):
     admin_file = os.path.join(BASE_DIR, "admin", "index.html")
     if not os.path.exists(admin_file):
         raise HTTPException(status_code=404, detail="Admin panel HTML not found")
     with open(admin_file, "r", encoding="utf-8") as f:
         return HTMLResponse(content=f.read())
-
-# --- PUBLIC ROUTE ALIASES ---
-@app.get("/collections")
-async def collections_redirect():
-    return RedirectResponse(url="/collections.html", status_code=301)
-
-@app.get("/media")
-async def media_redirect():
-    return RedirectResponse(url="/media.html", status_code=301)
 
 # Static files
 app.mount("/uploads", StaticFiles(directory=UPLOADS_DIR), name="uploads")

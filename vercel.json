@@ -1,10 +1,4 @@
 {
   "cleanUrls": true,
-  "trailingSlash": false,
-  "rewrites": [
-    { "source": "/admin", "destination": "/admin.html" },
-    { "source": "/admin/", "destination": "/admin.html" },
-    { "source": "/admin/index.html", "destination": "/admin.html" },
-    { "source": "/api/(.*)", "destination": "/api/index.py" }
-  ]
+  "trailingSlash": false
 }
