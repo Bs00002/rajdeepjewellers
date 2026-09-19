@@ -949,6 +949,16 @@
             return '/' + url.replace(/^\.?\/?/, '');
         }
 
+        // Auth Header Helper
+        function getAuthHeaders(extraHeaders = {}) {
+            const token = localStorage.getItem('rajdeep_admin_token');
+            const headers = { ...extraHeaders };
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+            return headers;
+        }
+
         // Toast Helper
         function showToast(message, isError = false) {
             const container = document.getElementById('toastContainer');
@@ -966,27 +976,33 @@
         // Check active session on load
         async function checkAuth() {
             try {
-                const res = await fetch('/api/session');
-                const data = await res.json();
-                if (data.authenticated) {
-                    document.getElementById('loginView').style.display = 'none';
-                    document.getElementById('adminApp').style.display = 'flex';
-                    document.getElementById('activeUserLabel').textContent = data.username || 'Rajdeep Gold Palace';
-                    
-                    const path = window.location.pathname;
-                    if (path.includes('/collections')) {
-                        switchTab('collections');
-                    } else if (path.includes('/media')) {
-                        switchTab('media');
-                    } else {
-                        switchTab(currentTab || 'dashboard');
+                const res = await fetch('/api/session', {
+                    headers: getAuthHeaders()
+                });
+                if (res.ok) {
+                    const data = await res.json();
+                    if (data.authenticated) {
+                        document.getElementById('loginView').style.display = 'none';
+                        document.getElementById('adminApp').style.display = 'flex';
+                        document.getElementById('activeUserLabel').textContent = data.username || 'Rajdeep Gold Palace';
+                        
+                        const path = window.location.pathname;
+                        if (path.includes('/collections')) {
+                            switchTab('collections');
+                        } else if (path.includes('/media')) {
+                            switchTab('media');
+                        } else {
+                            switchTab(currentTab || 'dashboard');
+                        }
+                        return;
                     }
-                } else {
-                    document.getElementById('loginView').style.display = 'flex';
-                    document.getElementById('adminApp').style.display = 'none';
                 }
+                document.getElementById('loginView').style.display = 'flex';
+                document.getElementById('adminApp').style.display = 'none';
             } catch (err) {
                 console.error('Session check error', err);
+                document.getElementById('loginView').style.display = 'flex';
+                document.getElementById('adminApp').style.display = 'none';
             }
         }
 
@@ -1008,14 +1024,22 @@
                 });
 
                 if (res.ok) {
-                    showToast('Saved successfully.');
+                    const data = await res.json();
+                    if (data.token) {
+                        localStorage.setItem('rajdeep_admin_token', data.token);
+                    }
+                    showToast('Signed in successfully.');
                     checkAuth();
                 } else {
-                    const errData = await res.json();
-                    showToast(errData.detail || 'Could not save changes.', true);
+                    let errMsg = 'Invalid username or password';
+                    try {
+                        const errData = await res.json();
+                        if (errData.detail) errMsg = errData.detail;
+                    } catch (e) {}
+                    showToast(errMsg, true);
                 }
             } catch (err) {
-                showToast('Could not save changes.', true);
+                showToast('Unable to connect to server. Please try again.', true);
             } finally {
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Sign In';
@@ -1025,11 +1049,15 @@
         // Logout Handler
         document.getElementById('logoutBtn').addEventListener('click', async function() {
             try {
-                await fetch('/api/logout', { method: 'POST' });
+                await fetch('/api/logout', { 
+                    method: 'POST',
+                    headers: getAuthHeaders()
+                });
+            } catch (err) {
+            } finally {
+                localStorage.removeItem('rajdeep_admin_token');
                 showToast('Logged out successfully.');
                 checkAuth();
-            } catch (err) {
-                window.location.reload();
             }
         });
 
@@ -1075,7 +1103,9 @@
         // --- STATS ---
         async function loadDashboardStats() {
             try {
-                const res = await fetch('/api/stats');
+                const res = await fetch('/api/stats', {
+                    headers: getAuthHeaders()
+                });
                 if (res.ok) {
                     const data = await res.json();
                     document.getElementById('statTotalCollections').textContent = data.total_collections || 0;
@@ -1092,7 +1122,9 @@
 
         async function loadCollections() {
             try {
-                const res = await fetch('/api/admin/collections');
+                const res = await fetch('/api/admin/collections', {
+                    headers: getAuthHeaders()
+                });
                 if (res.ok) {
                     collectionsData = await res.json();
                     renderCollectionsTable();
@@ -1181,7 +1213,7 @@
             try {
                 const res = await fetch(url, {
                     method: method,
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
                     body: JSON.stringify(payload)
                 });
                 if (res.ok) {
@@ -1200,7 +1232,10 @@
         async function deleteCollection(id) {
             if (!confirm('Are you sure you want to delete this collection?')) return;
             try {
-                const res = await fetch(`/api/admin/collections/${id}`, { method: 'DELETE' });
+                const res = await fetch(`/api/admin/collections/${id}`, { 
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
+                });
                 if (res.ok) {
                     showToast('Saved successfully.');
                     loadCollections();
@@ -1218,7 +1253,9 @@
 
         async function loadMedia() {
             try {
-                const res = await fetch('/api/admin/media');
+                const res = await fetch('/api/admin/media', {
+                    headers: getAuthHeaders()
+                });
                 if (res.ok) {
                     mediaData = await res.json();
                     renderMediaTable();
@@ -1306,7 +1343,7 @@
             try {
                 const res = await fetch(url, {
                     method: method,
-                    headers: { 'Content-Type': 'application/json' },
+                    headers: getAuthHeaders({ 'Content-Type': 'application/json' }),
                     body: JSON.stringify(payload)
                 });
                 if (res.ok) {
@@ -1325,7 +1362,10 @@
         async function deleteMedia(id) {
             if (!confirm('Are you sure you want to delete this media item?')) return;
             try {
-                const res = await fetch(`/api/admin/media/${id}`, { method: 'DELETE' });
+                const res = await fetch(`/api/admin/media/${id}`, { 
+                    method: 'DELETE',
+                    headers: getAuthHeaders()
+                });
                 if (res.ok) {
                     showToast('Saved successfully.');
                     loadMedia();
@@ -1348,6 +1388,7 @@
             try {
                 const res = await fetch('/api/admin/upload', {
                     method: 'POST',
+                    headers: getAuthHeaders(),
                     body: formData
                 });
                 if (res.ok) {
@@ -1371,6 +1412,7 @@
             try {
                 const res = await fetch('/api/admin/upload', {
                     method: 'POST',
+                    headers: getAuthHeaders(),
                     body: formData
                 });
                 if (res.ok) {
